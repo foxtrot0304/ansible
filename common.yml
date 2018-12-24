@@ -1,0 +1,17 @@
+---
+- hosts: all
+  user: root
+  tasks:
+    - name: install packages
+      yum: name={{ item }} state=installed
+      with_items:
+      - vim
+      - nano
+      - wget
+      - tcpdump
+      - strace
+      - bind-utils
+      - pam_ldap
+      - nscd
+      - nss-pam-ldapd
+      - openldap-clients
