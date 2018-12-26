@@ -15,3 +15,4 @@
       - nscd
       - nss-pam-ldapd
       - openldap-clients
+      - git
