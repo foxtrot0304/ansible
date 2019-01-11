@@ -1,9 +1,8 @@
 ---
 - hosts: all
-  user: root
   tasks:
     - name: install packages
-      yum: name={{ item }} state=installed
+      yum: name={{ item }} state=latest
       with_items:
       - vim
       - nano
@@ -15,3 +14,5 @@
       - nscd
       - nss-pam-ldapd
       - openldap-clients
+      - git
+      - ntp
