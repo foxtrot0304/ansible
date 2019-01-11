@@ -16,3 +16,9 @@
       - openldap-clients
       - git
       - ntp
+
+    - name: enable ntpd
+      systemd:
+        name: ntpd
+        enabled: yes
+        state: started
