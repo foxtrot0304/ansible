@@ -16,6 +16,8 @@
       - openldap-clients
       - git
       - ntp
+      - zip
+      - unzip
 
     - name: enable ntpd
       systemd:
