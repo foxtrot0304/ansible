@@ -18,6 +18,7 @@
       - ntp
       - zip
       - unzip
+      - gcc-c++
 
     - name: enable ntpd
       systemd:
