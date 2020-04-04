@@ -25,3 +25,7 @@
         name: ntpd
         enabled: yes
         state: started
+
+    - name: Set timezone to Asia/Tokyo
+      timezone:
+        name: Asia/Tokyo
