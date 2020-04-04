@@ -2,23 +2,24 @@
 - hosts: all
   tasks:
     - name: install packages
-      yum: name={{ item }} state=latest
-      with_items:
-      - vim
-      - nano
-      - wget
-      - tcpdump
-      - strace
-      - bind-utils
-      - pam_ldap
-      - nscd
-      - nss-pam-ldapd
-      - openldap-clients
-      - git
-      - ntp
-      - zip
-      - unzip
-      - gcc-c++
+      yum: name={{ packages }} state=latest
+      vars:
+        packages:
+        - vim
+        - nano
+        - wget
+        - tcpdump
+        - strace
+        - bind-utils
+        - pam_ldap
+        - nscd
+        - nss-pam-ldapd
+        - openldap-clients
+        - git
+        - ntp
+        - zip
+        - unzip
+        - gcc-c++
 
     - name: enable ntpd
       systemd:
