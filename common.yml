@@ -1,5 +1,8 @@
 ---
 - hosts: all
+#  debugger: always
+
+
   tasks:
     - name: install packages
       yum: name={{ packages }} state=latest
