@@ -16,6 +16,6 @@
 
     - name: enable ntpd
       systemd:
-        name: ntpd
+        name: ntp
         enabled: yes
         state: started
