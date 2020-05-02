@@ -1,0 +1,21 @@
+---
+- hosts: all
+  tasks:
+    - name: install packages
+      apt: name={{ item }} state=latest update_cache=yes
+      with_items:
+      - vim
+      - nano
+      - wget
+      - tcpdump
+      - strace
+      - git
+      - ntp
+      - zip
+      - unzip
+
+    - name: enable ntpd
+      systemd:
+        name: ntp
+        enabled: yes
+        state: started

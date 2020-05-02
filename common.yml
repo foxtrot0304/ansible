@@ -1,26 +1,49 @@
 ---
 - hosts: all
+#  debugger: always
+
   tasks:
     - name: install packages
-      yum: name={{ item }} state=latest
-      with_items:
-      - vim
-      - nano
-      - wget
-      - tcpdump
-      - strace
-      - bind-utils
-      - pam_ldap
-      - nscd
-      - nss-pam-ldapd
-      - openldap-clients
-      - git
-      - ntp
-      - zip
-      - unzip
+      yum: name={{ packages }} state=latest
+      vars:
+        packages:
+        - vim
+        - nano
+        - wget
+        - tcpdump
+        - strace
+        - bind-utils
+        - pam_ldap
+        - nscd
+        - nss-pam-ldapd
+        - openldap-clients
+        - git
+        - ntp
+        - zip
+        - unzip
+        - gcc-c++
 
     - name: enable ntpd
       systemd:
         name: ntpd
         enabled: yes
         state: started
+
+    - name: Set timezone to Asia/Tokyo
+      timezone:
+        name: Asia/Tokyo
+
+    - name: install epel repository
+      yum: name=epel-release state=latest
+
+- hosts: ftp
+
+  tasks:
+    - name: install proftpd
+      yum: name=proftpd state=latest
+
+    - name: install fuse
+      yum: name=fuse state=latest
+
+    - name: install golang
+      yum: name=golang state=latest
