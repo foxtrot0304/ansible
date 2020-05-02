@@ -2,7 +2,6 @@
 - hosts: all
 #  debugger: always
 
-
   tasks:
     - name: install packages
       yum: name={{ packages }} state=latest
@@ -33,3 +32,18 @@
     - name: Set timezone to Asia/Tokyo
       timezone:
         name: Asia/Tokyo
+
+    - name: install epel repository
+      yum: name=epel-release state=latest
+
+- hosts: ftp
+
+  tasks:
+    - name: install proftpd
+      yum: name=proftpd state=latest
+
+    - name: install fuse
+      yum: name=fuse state=latest
+
+    - name: install golang
+      yum: name=golang state=latest
