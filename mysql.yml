@@ -1,0 +1,30 @@
+---
+- hosts: all
+#  debugger: always
+
+  tasks:
+    - name: remove mariadb-libs
+      yum:
+        name: mariadb-lib
+        state: removed
+
+    - name: check dir
+      stat:
+        path: /var/lib/mysql
+      register: p
+
+    - name: remove mysql dir
+      file:
+        path: /var/lib/mysql
+        state: absent
+      when: p.stat.isdir is defined and p.stat.isdir
+
+    - name: install mysql yum repository
+      yum:
+        state: present
+        name: https://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+
+    - name: install mysql57
+      yum:
+        state: present
+        name: mysql-community-server
